@@ -1,3 +1,3 @@
 # Logowanie i rejestracja użytkownika
 
-## Aplikacja gr 3
+### Aplikacja gr 3
