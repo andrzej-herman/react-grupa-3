@@ -1,18 +1,20 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Container } from "react-bootstrap";
-import Header from "./header/Header";
-import Login from "./login/Login";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import LoginPage from "./LoginPage";
+import Shop from "./Shop";
+import MainPage from "./MainPage";
 
 const App = () => {
   return (
-    <div className="app">
-      <Container className="gr_3_container">
-        <Header />
-        <Login />
-      </Container>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={MainPage} />
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/shop" component={Shop} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
