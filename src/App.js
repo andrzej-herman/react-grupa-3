@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import Shop from "./Shop";
 import MainPage from "./MainPage";
+import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/shop" component={Shop} />
+        <PrivateRoute exact path="/shop" component={Shop} />
       </Switch>
     </BrowserRouter>
   );

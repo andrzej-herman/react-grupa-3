@@ -1,11 +1,11 @@
 import firebase from "firebase";
 const firebaseConfig = {
-  apiKey: "AIzaSyDR4-WSRZZgRlqLJ15CmAxZEdPhqKbY2AE",
-  authDomain: "react-grupa-3.firebaseapp.com",
-  projectId: "react-grupa-3",
-  storageBucket: "react-grupa-3.appspot.com",
-  messagingSenderId: "894799243331",
-  appId: "1:894799243331:web:d8070229ad6d9aea638cf6",
+  apiKey: "AIzaSyC3HqkNNDDy3uxZuaFH0trQLYPaHXZ46Do",
+  authDomain: "react-grupa3.firebaseapp.com",
+  projectId: "react-grupa3",
+  storageBucket: "react-grupa3.appspot.com",
+  messagingSenderId: "130267136631",
+  appId: "1:130267136631:web:d8019f86dcf60f4af97c72",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);

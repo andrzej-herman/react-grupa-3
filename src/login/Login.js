@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Form, Button, Alert } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "../firebase";
+import { useStateValue } from "../redux/StateProvider";
+import { actionTypes } from "../redux/reducer";
 
 const Login = () => {
+  const [{ user }, dispatch] = useStateValue();
+
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
+
+  const history = useHistory();
 
   const handleEmail = (event) => {
     setUserEmail(event.target.value);
@@ -14,9 +22,27 @@ const Login = () => {
     setUserPassword(event.target.value);
   };
 
-  const sendUserToServer = (event) => {
+  const loginUser = (event) => {
     event.preventDefault();
-    alert(`Email => ${userEmail}, Password => ${userPassword}`);
+
+    auth
+      .signInWithEmailAndPassword(userEmail, userPassword)
+      .then(async () => {
+        const looggedUser = {
+          email: userEmail,
+          password: userPassword,
+        };
+
+        dispatch({
+          type: actionTypes.LOGIN_USER,
+          user: looggedUser,
+        });
+
+        history.push("/shop");
+      })
+      .catch((error) => {
+        setLoginError(true);
+      });
   };
 
   return (
@@ -50,11 +76,17 @@ const Login = () => {
               type="submit"
               block
               className="login_button"
-              onClick={sendUserToServer}
+              onClick={loginUser}
             >
               Zaloguj
             </Button>
           </Form>
+
+          {loginError ? (
+            <Alert className="alert" variant="danger">
+              Nieprawidłowy email lub hasło
+            </Alert>
+          ) : null}
         </div>
       </div>
       <div className="test">

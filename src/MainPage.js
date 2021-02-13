@@ -10,7 +10,8 @@ const MainPage = () => {
       <Container className="gr_3_container">
         <Header />
         <h1>Strona główna</h1>
-        <Link to="/login">Zaloguje się</Link>
+        <Link to="/login">Zaloguj się</Link>
+        <br />
         <Link to="/shop">Zobacz sklep</Link>
       </Container>
     </div>
